@@ -44,6 +44,7 @@
 			isa = PBXGroup;
 			children = (
 				65E135192AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift */,
+				65305EE82AFCFE9700BC98B1 /* README.md */,
 				651BDB992AF5C0D7004914C8 /* Weather App */,
 				651BDB982AF5C0D7004914C8 /* Products */,
 			);
@@ -63,11 +64,10 @@
 				651BDB9A2AF5C0D7004914C8 /* AppDelegate.swift */,
 				651BDB9C2AF5C0D7004914C8 /* SceneDelegate.swift */,
 				651BDB9E2AF5C0D7004914C8 /* ViewController.swift */,
+				651BDBAE2AF876D7004914C8 /* Color.swift */,
 				651BDBA32AF5C0D8004914C8 /* Assets.xcassets */,
 				651BDBA52AF5C0D8004914C8 /* LaunchScreen.storyboard */,
 				651BDBA82AF5C0D8004914C8 /* Info.plist */,
-				651BDBAE2AF876D7004914C8 /* Color.swift */,
-				65305EE82AFCFE9700BC98B1 /* README.md */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
