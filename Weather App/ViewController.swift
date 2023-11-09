@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         label.font = UIFont.systemFont(ofSize: 20)
         label.text = "João Pessoa"
         label.textAlignment = .center
-        label.textColor = UIColor.color.bluePrimaryColor
+        label.textColor = Colors.bluePrimaryColor
         return label
     }()   
     
@@ -52,30 +52,97 @@ class ViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+    
+    private lazy var humiditylabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Umidade"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Colors.whiteColorContrast
+        return label
+    }()    
+    
+    private lazy var humidityValuelabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "1000mm"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Colors.whiteColorContrast
+        return label
+    }()
+    
+    private lazy var humidityStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [humiditylabel, humidityValuelabel])
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()    
+    
+    private lazy var windlabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Vento"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Colors.whiteColorContrast
+        return label
+    }()    
+    
+    private lazy var windValuelabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "10km/h"
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.textColor = Colors.whiteColorContrast
+        return label
+    }()
+    
+    private lazy var windStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [windlabel, windValuelabel])
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var statsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [humidityStackView, windStackView])
+        stackView.axis = .vertical
+        stackView.spacing = 3
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.backgroundColor = Colors.SoftGray
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 12, leading: 24, bottom: 15, trailing: 24)
+        stackView.layer.cornerRadius = 12
+        return stackView
+    }()
+    
+    private lazy var hourlyForecastLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "PREVISÃO POR HORA"
+        label.textColor = Colors.whiteColorContrast
+        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        return label
+    }()
+    
+    private lazy var timeHorizontalCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 67, height: 84)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.dataSource = self
+        collectionView.register(HourlyForecastCollectionViewCell.self, forCellWithReuseIdentifier: HourlyForecastCollectionViewCell.idenfier)
+        return collectionView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
-    
     private func setupViews() {
-        view.backgroundColor = .cyan
         setUpHierahcy()
         setUpConstraints()
     }
@@ -83,6 +150,10 @@ class ViewController: UIViewController {
     private func setUpHierahcy() {
         view.addSubview(backgroundView)
         view.addSubview(rectangleView)
+        view.addSubview(statsStackView)
+        view.addSubview(hourlyForecastLabel)
+        view.addSubview(timeHorizontalCollectionView)
+        
         rectangleView.addSubview(cityLabel)
         rectangleView.addSubview(temperatureLabel)
         rectangleView.addSubview(sunImageView)
@@ -119,7 +190,34 @@ class ViewController: UIViewController {
             sunImageView.trailingAnchor.constraint(equalTo: rectangleView.trailingAnchor, constant: -26),
             sunImageView.leadingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor, constant: 15)
         ])
+        NSLayoutConstraint.activate([
+            statsStackView.topAnchor.constraint(equalTo: rectangleView.bottomAnchor, constant: 24),
+            statsStackView.widthAnchor.constraint(equalToConstant: 206),
+            statsStackView.heightAnchor.constraint(equalToConstant: 67),
+            statsStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            hourlyForecastLabel.topAnchor.constraint(equalTo: statsStackView.bottomAnchor, constant: 30),
+            hourlyForecastLabel.centerXAnchor.constraint(equalTo: statsStackView.centerXAnchor)
+        ])
+        NSLayoutConstraint.activate([
+            timeHorizontalCollectionView.topAnchor.constraint(equalTo: hourlyForecastLabel.bottomAnchor, constant: 22),
+            //timeHorizontalCollectionView.widthAnchor.constraint(equalToConstant: 67),
+            timeHorizontalCollectionView.heightAnchor.constraint(equalToConstant: 84),
+            timeHorizontalCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            timeHorizontalCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
     }
 
 }
 
+extension ViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyForecastCollectionViewCell.idenfier, for: indexPath)
+        return cell
+    }
+}

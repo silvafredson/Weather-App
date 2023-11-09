@@ -7,10 +7,12 @@
 
 import UIKit
 
-struct Colors {
-    let bluePrimaryColor = UIColor(named: "bluePrimaryColor")
-}
+//extension UIColor {
+//    static let color = Colors()
+//}
 
-extension UIColor {
-    static let color = Colors()
+struct Colors {
+    static let bluePrimaryColor = UIColor(named: "bluePrimaryColor")
+    static let whiteColorContrast = UIColor(named: "whiteContrast")
+    static let SoftGray = UIColor(named: "rectangleSoftGray")
 }
