@@ -13,6 +13,7 @@
 		651BDBA42AF5C0D8004914C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651BDBA32AF5C0D8004914C8 /* Assets.xcassets */; };
 		651BDBA72AF5C0D8004914C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651BDBA52AF5C0D8004914C8 /* LaunchScreen.storyboard */; };
 		651BDBAF2AF876D7004914C8 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651BDBAE2AF876D7004914C8 /* Color.swift */; };
+		65B641E32B26FFE600D63141 /* DailyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B641E22B26FFE600D63141 /* DailyForecastTableViewCell.swift */; };
 		65E1351A2AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E135192AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		651BDBA82AF5C0D8004914C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651BDBAE2AF876D7004914C8 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		65305EE82AFCFE9700BC98B1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65B641E22B26FFE600D63141 /* DailyForecastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyForecastTableViewCell.swift; sourceTree = "<group>"; };
 		65E135192AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -43,7 +45,6 @@
 		651BDB8E2AF5C0D7004914C8 = {
 			isa = PBXGroup;
 			children = (
-				65E135192AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift */,
 				65305EE82AFCFE9700BC98B1 /* README.md */,
 				651BDB992AF5C0D7004914C8 /* Weather App */,
 				651BDB982AF5C0D7004914C8 /* Products */,
@@ -63,7 +64,9 @@
 			children = (
 				651BDB9A2AF5C0D7004914C8 /* AppDelegate.swift */,
 				651BDB9C2AF5C0D7004914C8 /* SceneDelegate.swift */,
+				65E135192AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift */,
 				651BDB9E2AF5C0D7004914C8 /* ViewController.swift */,
+				65B641E22B26FFE600D63141 /* DailyForecastTableViewCell.swift */,
 				651BDBAE2AF876D7004914C8 /* Color.swift */,
 				651BDBA32AF5C0D8004914C8 /* Assets.xcassets */,
 				651BDBA52AF5C0D8004914C8 /* LaunchScreen.storyboard */,
@@ -144,6 +147,7 @@
 			files = (
 				651BDB9F2AF5C0D7004914C8 /* ViewController.swift in Sources */,
 				651BDBAF2AF876D7004914C8 /* Color.swift in Sources */,
+				65B641E32B26FFE600D63141 /* DailyForecastTableViewCell.swift in Sources */,
 				651BDB9B2AF5C0D7004914C8 /* AppDelegate.swift in Sources */,
 				65E1351A2AFB8A6200432D3B /* HourlyForecastCollectionViewCell.swift in Sources */,
 				651BDB9D2AF5C0D7004914C8 /* SceneDelegate.swift in Sources */,
