@@ -15,7 +15,7 @@ class DailyForecastTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Terça"
-        label.textColor = Colors.bluePrimaryColor
+        label.textColor = Colors.whiteColorContrast
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
@@ -24,7 +24,7 @@ class DailyForecastTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "min 25ºC"
-        label.textColor = Colors.bluePrimaryColor
+        label.textColor = Colors.whiteColorContrast
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
@@ -33,26 +33,51 @@ class DailyForecastTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "max 31ºC"
-        label.textColor = Colors.bluePrimaryColor
+        label.textColor = Colors.whiteColorContrast
         label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         return label
     }()
     
-    private lazy var iconImageView: UIImageView = {
+    private lazy var iconCloudView: UIImageView = {
         let label = UIImageView()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.contentMode = .scaleAspectFit
         label.image = UIImage(named: "cloud")
+        label.tintColor = Colors.whiteColorContrast
         return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [weekDayLabel, iconCloudView, minTemperatureLabel, maxTemperatureLabel])
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.spacing = 15
+        return stackView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = .yellow
+        setUpView()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setUpView() {
+        backgroundColor = .clear
+        setUpHierarchy()
+        setUpConstraints()
+    }
+    
+    private func setUpHierarchy() {
+        contentView.addSubview(stackView)
+    }
+    
+    private func setUpConstraints() {
+        stackView.setUpConstraintsToParents(contentView)
     }
     
 }

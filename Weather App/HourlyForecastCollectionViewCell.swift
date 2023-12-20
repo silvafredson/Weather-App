@@ -69,11 +69,8 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(stackView)
     }
     private func setUpConstraints() {
+        stackView.setUpConstraintsToParents(contentView)
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imagewView.heightAnchor.constraint(equalToConstant: 33)
         ])
     }
