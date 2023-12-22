@@ -51,7 +51,7 @@ class DailyForecastTableViewCell: UITableViewCell {
         let stackView = UIStackView(arrangedSubviews: [weekDayLabel, iconCloudView, minTemperatureLabel, maxTemperatureLabel])
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        stackView.directionalLayoutMargins = NSDirectionalEdgeInsets(top: 16, leading: 32, bottom: 16, trailing: 32)
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.spacing = 15
         return stackView
@@ -68,12 +68,16 @@ class DailyForecastTableViewCell: UITableViewCell {
     
     private func setUpView() {
         backgroundColor = .clear
+        selectionStyle = .none
         setUpHierarchy()
         setUpConstraints()
     }
     
     private func setUpHierarchy() {
         contentView.addSubview(stackView)
+        NSLayoutConstraint.activate([
+            weekDayLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 50)
+        ])
     }
     
     private func setUpConstraints() {

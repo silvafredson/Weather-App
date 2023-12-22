@@ -120,7 +120,7 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "PREVISÃO POR HORA"
         label.textColor = Colors.whiteColorContrast
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         return label
     }()
     
@@ -140,9 +140,9 @@ class ViewController: UIViewController {
     private lazy var dailyForecastLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PROXIMOS DIAS"
+        label.text = "PRÓXIMOS DIAS"
         label.textColor = Colors.whiteColorContrast
-        label.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: 12, weight: .bold)
         label.textAlignment = .center
         return label
     }()
@@ -189,7 +189,7 @@ class ViewController: UIViewController {
             backgroundView.bottomAnchor.constraint(equalTo: view .bottomAnchor),
         ])
         NSLayoutConstraint.activate([
-            rectangleView.heightAnchor.constraint(equalToConstant: 169),
+            rectangleView.heightAnchor.constraint(equalToConstant: 150),
             rectangleView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 59),
             rectangleView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 35),
             rectangleView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35),
@@ -236,13 +236,12 @@ class ViewController: UIViewController {
             dailyForecastLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -35)
         ])
         NSLayoutConstraint.activate([
-            dailyForecastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 30),
+            dailyForecastTableView.topAnchor.constraint(equalTo: dailyForecastLabel.bottomAnchor, constant: 16),
             dailyForecastTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dailyForecastTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dailyForecastTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-
 }
 
 extension ViewController: UICollectionViewDataSource {
